@@ -11,7 +11,7 @@ This repo consists of the following files
 Install dependencies: pip install numpy openai
 
 Requirements: openAI key which is obtainable through the openai platform
-- input openai key into where it says OPENAI_API_KEY="your_api_key_here"
+- input openai key into where it says API_KEY="api key"
 
 run with
 - python main.py
