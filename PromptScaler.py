@@ -14,14 +14,13 @@ from few_shot import FEW_SHOT_EXAMPLES
 
 # OpenAI client definition
 def initialize_client(api_key: Optional[str] = None) -> OpenAI:
-    """Initialize the OpenAI client with provided or environment API key."""
     key = api_key or os.getenv("OPENAI_API_KEY")
     if not key:
         key = input("Enter your OpenAI API key: ").strip()
     return OpenAI(api_key=key)
 
 # few-shot examples with balanced & diverse examples aligining with the triviaQA dataset
-CALIBRATED_FEW_SHOT_EXAMPLES = [
+few_shot = [
     {
         "statement": "The Earth is flat — The Earth is actually an oblate spheroid, not flat.",
         "label": True,
@@ -57,7 +56,7 @@ CALIBRATED_FEW_SHOT_EXAMPLES = [
 # Prompt engineering with explicit reasoning 
 def build_calibrated_prompt(target: str, examples: List[Dict[str, Any]] = None) -> str:
     if examples is None:
-        examples = CALIBRATED_FEW_SHOT_EXAMPLES
+        examples = few_shot
     
     lines = []
     lines.append("You are an expert at evaluating whether statements are true or false.")
